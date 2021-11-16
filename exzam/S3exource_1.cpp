@@ -131,40 +131,39 @@ int main()
 
 		}
 	} while (true);*/
-	std::cout << "Укажите сколько текстов вы хотите добавить.. \n";
-	int size, choose, chase, a = 0;
-	std::vector <Songs> vectord;
-	std::cin >> size;
-	vectord.resize(size);
+	int size, choose, chase, a = 0, posit = 0;
+	std::vector <Songs> songs;
 	do
-	{
+	{	
+		system("pause");
+		/*system("cls");*/
 		std::cout << "1.Добавить\n2.Вывести\n";
 		std::cin >> choose;
-		system("pause");
-		system("cls");
 		switch (choose)
 		{
 		case 1:
 		{
-
+			adda = 1;
+			std::cout << "Укажите сколько текстов вы хотите добавить.. \n";
+			std::cin >> size;
+			songs.resize(size);
 			std::cout << "1.Из файла\n2.С клавиатуры\n";
 			std::cin >> chase;
 			switch (chase)
 			{
 			case 1:
 			{
-				for (int i = 0; i < vectord.size(); i++)
+				for (int i = 0; i < songs.size(); i++)
 				{
 					a == true;
-					vectord.at(i).addFL();
-
+					songs.at(i).addFL();
 				}
 				break;
 			}
 			case 2:
 			{
-				for (int i = 0; i < vectord.size(); i++)
-					vectord.at(i).addKL();
+				for (int i = 0; i < songs.size(); i++)
+					songs.at(i).addKL();
 			}
 			default:
 			{
@@ -175,13 +174,12 @@ int main()
 		}
 		case 2:
 		{
-			for (int i = 0; i < vectord.size(); i++)
-			{
-
-				vectord.at(i).print(a);
-			}
-			break;
-		}
+			if (posit == 0)
+				std::cout << "Не добавлено ни одного текста..";
+			else
+				for (int i = 0; i < songs.size(); i++)
+					songs.at(i).print(a);
+		}break;
 		default:
 		{
 			std::cout << "Не верно";
@@ -190,4 +188,5 @@ int main()
 		}
 	}while (choose != 0);
 }
+
 
