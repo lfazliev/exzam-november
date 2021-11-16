@@ -48,7 +48,6 @@ public:
 
 	void addKL()
 	{
-		std::cout << "Как вы хотите ввести текст песни\n1.С клавиатуры\n2.Взять из файла\n";
 		std::cin >> text;
 		std::cout << "Введите название песни - ";
 		std::cin >> name;
@@ -58,10 +57,11 @@ public:
 		std::cin >> age;
 		std::cout << "Песня добавлена...\n\n";
 	}
-	void addFL()
+	void addFL(std::string hou)
 	{
 		setlocale(LC_ALL, "rus");
-		std::ifstream file("Loug.txt");
+		
+		std::ifstream file(hou);
 		if (!file)
 		{
 			std::cout << "Файл не открыт\n\n";
@@ -69,6 +69,11 @@ public:
 		else
 		{
 			std::cout << "Все ОК! Файл открыт!\n\n";
+		}
+		while (file)
+		{
+			std::getline(file, text);
+			std::cout << text << "\n";
 		}
 		std::cout << "Введите название песни - ";
 		std::cin >> name;
@@ -79,28 +84,25 @@ public:
 		std::cout << "Песня добавлена...\n\n";
 	}
 	
-	void print(int a)
+	void print(int a, std::string hou)
 	{
-		if (a == true)
-		{
-			std::ifstream file("Loug.txt");
-			{
-				while (file)
-				{
-
-					std::string strIn;
-					file >> strIn;
-					std::cout << strIn << std::endl;
-				}
-			}
+		system("chcp 1251");
+		if (a = 0)
+		{	
+			std::cout << text;
 		}
 		else
 		{
-			std::cout << text;
+			std::ifstream file(hou);
+			while (file)
+			{
+				std::getline(file, text);
+				std::cout << text << "\n";
+			}
 		}
-		std::cout << name << "\n";
-		std::cout << actor << "\n";
-		std::cout << age << "\n";
+		std::cout << "Название - " << name << "\n";
+		std::cout << "Исполнитель: " << actor << "\n";
+		std::cout << "Год - " << age << "\n";
 	}
 };
 int main()
@@ -133,21 +135,22 @@ int main()
 	} while (true);*/
 	int size, choose, chase, a = 0, posit = 0;
 	std::vector <Songs> songs;
+	std::string hou;
 	do
 	{	
 		system("pause");
-		/*system("cls");*/
+		system("cls");
 		std::cout << "1.Добавить\n2.Вывести\n";
 		std::cin >> choose;
 		switch (choose)
 		{
 		case 1:
 		{
-			adda = 1;
+			posit = 1;
 			std::cout << "Укажите сколько текстов вы хотите добавить.. \n";
 			std::cin >> size;
 			songs.resize(size);
-			std::cout << "1.Из файла\n2.С клавиатуры\n";
+			std::cout << "1.Из файла\n2.С клавиатуры\n3.Назад\n";
 			std::cin >> chase;
 			switch (chase)
 			{
@@ -155,8 +158,10 @@ int main()
 			{
 				for (int i = 0; i < songs.size(); i++)
 				{
-					a == true;
-					songs.at(i).addFL();
+					std::getline(std::cin, hou);
+					a = 1;
+					
+					songs.at(i).addFL(hou);
 				}
 				break;
 			}
@@ -164,6 +169,14 @@ int main()
 			{
 				for (int i = 0; i < songs.size(); i++)
 					songs.at(i).addKL();
+				break;
+			}
+			case 3:
+			{
+				std::cout << "Сколько текстов вы хотите добавить - \n";
+				std::cin >> size;
+				songs.resize(size);
+				break;
 			}
 			default:
 			{
@@ -171,15 +184,17 @@ int main()
 				break;
 			}
 			}
+			break;
 		}
 		case 2:
 		{
 			if (posit == 0)
-				std::cout << "Не добавлено ни одного текста..";
+				std::cout << "Не добавлено ни одного текста..\n";
 			else
 				for (int i = 0; i < songs.size(); i++)
-					songs.at(i).print(a);
-		}break;
+					songs.at(i).print(a, hou);
+			break;
+		}
 		default:
 		{
 			std::cout << "Не верно";
