@@ -6,7 +6,7 @@
 class songs
 {
 public:
-	std::string text;
+	std::string text, text_sum;
 	std::string name;
 	std::string actor;
 	std::string age;
@@ -39,6 +39,7 @@ public:
 				{
 					std::getline(file, text);
 					std::cout << text << std::endl;
+					text_sum = text_sum + text"\n";
 				}
 				break;
 			}
