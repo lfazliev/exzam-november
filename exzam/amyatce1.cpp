@@ -1,13 +1,12 @@
-/*#include <iostream>
+#include <iostream>
 #include <vector>
 #include <ctime>
-#include <algorithm>
 int main()
 {
     system("chcp 1251");
     system("pause");
     system("cls");
-    int choose, a, b, c, n;
+    int choose, a, b, n;
     do
     {
         std::cout << "\nВыберите размер поля\n1.2х2\n2.4х4\n3.6х6\n";
@@ -38,25 +37,34 @@ int main()
         }break;
         }
     } while (choose != 1 && choose != 2 && choose != 3);
+    
     std::vector<std::vector<int>> ivec(a);
     std::vector<std::vector<int>> boba(a);
     n = (a * b) / 2;
+    std::vector<int> vecr(n);
     for (auto i = 0; i < a; ++i)
     {
         ivec[i].resize(b);
         for (auto j = 0; j < b; ++j)
-            ivec[i][j] = -1;
+            ivec[i][j] = 0;
     }
     for (auto i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            while (ivec != -1)
+            while (ivec.at[a][b] != 0)
             {
-                ivec.push_back = rand() % n;
+                ivec.push_back = rand() % a + 1;
+                ivec.push_back = rand() % b + 1;
+            }
+            ivec[i][j] = vecr[i];
+            while (ivec.at[a][b] != 0)
+            {
+                ivec.push_back = rand() % a + 1;
+                ivec.push_back = rand() % b + 1;
                
             }
-            ivec = ivec[i][j];
+            ivec[i][j] = vecr[i];
         }
     }
     for (auto i = 0; i < a; ++i)
@@ -73,4 +81,3 @@ int main()
         std::cout << std::endl;
     }
 }
-*/

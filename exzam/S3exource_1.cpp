@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream>
 #include <conio.h>
 #include <string>
@@ -38,6 +38,7 @@ void print(int& position, int& counter, T t, Args ...arg)
 	counter++;
 	print(position, counter, arg...);
 }*/
+/*
 class songs
 {
 public:
@@ -150,7 +151,7 @@ int main()
 			break;
 
 		}
-	} while (true);*/
+	} while (true);
 	int size, choose, posit = 0;
 	std::vector <songs> songs;
 	std::string hou;
@@ -193,3 +194,4 @@ int main()
 }
 
 
+*/
