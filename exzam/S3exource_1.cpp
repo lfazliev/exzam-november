@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream>
 #include <conio.h>
 #include <string>
@@ -258,22 +258,32 @@ int main()
 		}break;
 		case 6:
 		{
-			std::string find;
-			std::cout << "Введите автора: ";
-			std::cin >> find;
-			for (int i = 0; i < song.size(); i++)
+			if (song.size() == 0)
+				std::cout << "Не добавлено ни одного текста..\n";
+			else
 			{
-				song.at(i).findautor(i, find);
+				std::string find;
+				std::cout << "Введите автора: ";
+				std::cin >> find;
+				for (int i = 0; i < song.size(); i++)
+				{
+					song.at(i).findautor(i, find);
+				}
 			}
 		}break;
 		case 7:
-		{
-			std::string fond;
-			std::cout << "Введите слово для поиска: ";
-			std::cin >> fond;
-			for (int i = 0; i < song.size(); i++)
+		{	
+			if (song.size() == 0)
+				std::cout << "Не добавлено ни одного текста..\n";
+			else
 			{
-				song.at(i).findo(i, fond);
+				std::string fond;
+				std::cout << "Введите слово для поиска: ";
+				std::cin >> fond;
+				for (int i = 0; i < song.size(); i++)
+				{
+					song.at(i).findo(i, fond);
+				}
 			}
 		}break;
 		default:
@@ -284,3 +294,4 @@ int main()
 		}
 	} while (choose != 0);
 }
+*/
