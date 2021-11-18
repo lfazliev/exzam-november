@@ -90,21 +90,34 @@ public:
 	}
 	void save()
 	{
-		std::ofstream out("txt.txt", std::ios::app);
+		std::ofstream out("txt.txt");
 		if (out.is_open())
 		{
-			out.write((char*)&text, sizeof(text));
+			out << text_sum;
 		}
 		out.close();
 	}
-
-	void findautor()
+	void findautor(int i, std::string find)
 	{
-
+		int B = 0;
+		int pos = actor.find(find);
+		if (pos != -1)
+		{
+			B = i + 1;
+			std::cout << "\nНайдено в песне " << B << "\n";
+			print(B);
+		}
 	}
-	void find()
+	void findo(int i, std::string find)
 	{
-
+		int B = 0;
+		int pos = text_sum.find(find);
+		if (pos != -1)
+		{
+			B = i + 1;
+			std::cout << "\nНайдено в песне " << B << "\n";
+			print(B);
+		}
 	}
 };
 int main()
@@ -117,7 +130,7 @@ int main()
 	{
 		system("pause");
 		system("cls");
-		std::cout << "1.Добавить\n2.Вывести\n3.Удалить текст\n4.Изменить текст\n5.Сохранение текста в файл\nЧто необходимо сделать? - ";
+		std::cout << "1.Добавить\n2.Вывести\n3.Удалить текст\n4.Изменить текст\n5.Сохранение текста в файл\n6.Поиск по автору\n7.Поиск по слову в тексте\nЧто необходимо сделать? - ";
 		std::cin >> choose;
 		if (choose == 0)
 			choose--;
@@ -243,12 +256,31 @@ int main()
 				}
 			}
 		}break;
+		case 6:
+		{
+			std::string find;
+			std::cout << "Введите автора: ";
+			std::cin >> find;
+			for (int i = 0; i < song.size(); i++)
+			{
+				song.at(i).findautor(i, find);
+			}
+		}break;
+		case 7:
+		{
+			std::string fond;
+			std::cout << "Введите слово для поиска: ";
+			std::cin >> fond;
+			for (int i = 0; i < song.size(); i++)
+			{
+				song.at(i).findo(i, fond);
+			}
+		}break;
 		default:
 		{
 			std::cout << "Нет такого варианта...\n";
 			break;
 		}
 		}
-
 	} while (choose != 0);
 }
