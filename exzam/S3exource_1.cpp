@@ -16,8 +16,14 @@ public:
 		int choose;
 		do
 		{
-			std::cout << "1.С клавиатуры\n2.Из файла\n";
+			system("pause");
+			system("cls");
+			std::cout << "1.С клавиатуры\n2.Из файла\nКак вы хотите добавить текст песни? - ";
 			std::cin >> choose;
+			if (choose = 0)
+			{
+				choose--;
+			}
 			switch (choose)
 			{
 			case 2:
@@ -34,43 +40,46 @@ public:
 				else
 				{
 					std::cout << "Все ОК! Файл открыт!\n\n";
+					choose = 0;
 				}
 				while (file)
 				{
 					std::getline(file, text);
 					std::cout << text << std::endl;
-					text_sum = text_sum + text"\n";
+					text_sum = text_sum + text + "\n";
 				}
 				break;
 			}
 			case 1:
 			{
-				std::cin >> text;
+				std::cout << "Введите текст\n";
+				std::cin.ignore();
+				std::getline(std::cin, text_sum);
 				break;
+				choose = 0;
 			}
 			default:
 				std::cout << "error";
 				break;
 			}
-			std::cout << "Введите название песни - ";
-			std::cin >> name;
-			std::cout << "\n";
-			std::cout << "Введите исполнителя - ";
-			std::cin >> actor;
-			std::cout << "\n";
-			std::cout << "Введите год выпуска - ";
-			std::cin >> age;
-			std::cout << "\n";
-			std::cout << "Песня добавлена...\n";
-			choose = 0;
 		} while (choose != 0);
+		std::cout << "\nВведите название песни - ";
+		std::getline(std::cin, name);
+		std::cout << "\n";
+		std::cout << "Введите исполнителя - ";
+		std::getline(std::cin, actor);
+		std::cout << "\n";
+		std::cout << "Введите год выпуска - ";
+		std::getline(std::cin, age);
+		std::cout << "\n";
+		std::cout << "Песня добавлена...\n";
 	}
 	void print()
 	{
-		std::cout << text << "\n";
-		std::cout << name << "\n";
-		std::cout << actor << "\n";
-		std::cout << age << std::endl;
+		std::cout << "Текст:\n" << text_sum << "\n";
+		std::cout << "Название - " << name << "\n";
+		std::cout << "Исполнитель - " << actor << "\n";
+		std::cout << "Год - " << age << "\n";
 	}
 	void edit()
 	{
@@ -92,28 +101,36 @@ public:
 int main()
 {
 	system("chcp 1251");
-	int size, choose, posit = 0;
+	int size = 0, choose, posit = 0,s2;
 	std::vector <songs> songs;
 	std::string hou;
 	do
 	{
 		system("pause");
 		system("cls");
-		std::cout << "1.Добавить\n2.Вывести\n";
+		std::cout << "1.Добавить\n2.Вывести\nЧто необходимо сделать? - ";
 		std::cin >> choose;
+		if (choose == 0)
+			choose--;
 		switch (choose)
 		{
 		case 1:
 		{
 			posit = 1;
-			std::cout << "Укажите сколько текстов вы хотите добавить.. \n";
-			std::cin >> size;
-			songs.resize(size);
-			for (int i = 0; i < songs.size(); i++)
+			std::cout << "Укажите сколько текстов вы хотите добавить - ";
+			std::cin >> s2;
+			if (s2 > 0)
 			{
-				songs.at(i).add();
+				size = size + s2;
+				songs.resize(size);
+				for (int i = 0; i < s2; i++)
+				{
+					songs.at(i).add();
+				}
+				break;
 			}
-			break;
+			else
+				std::cout << "Всм???\n";
 		}
 		case 2:
 		{
@@ -126,7 +143,7 @@ int main()
 		}
 		default:
 		{
-			std::cout << "Не верно";
+			std::cout << "Нет такого варианта...\n";
 			break;
 		}
 		}
