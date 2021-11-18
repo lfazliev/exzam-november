@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include <vector>
 #include <ctime>
 void printV(std::vector<std::vector<int>> nool)
@@ -19,7 +19,7 @@ int main()
     system("pause");
     system("cls");
     srand((int)time(NULL));
-    int choose, X, Y, n, chec, polX, polY, polX1, polY1, schet = 0;
+    int choose, chaose = 1, X, Y, n, chec, polX, polY, polX1, polY1, schet = 0;
     do
     {
         std::cout << "\n¬ыберите размер пол€\n1.2х2\n2.4х4\n3.6х6\n";
@@ -109,7 +109,6 @@ int main()
         std::cin >> polX1;
         std::cout << "\n";
         std::cin >> polY1;
-        
         polX1--;
         polY1--;
         if (polX == polX1 && polY == polY1)
@@ -129,14 +128,15 @@ int main()
             nool.at(polX).at(polY) = 404;
             nool.at(polX1).at(polY1) = 404;
             printV(nool);
-            std::cout << "\n                               " << schet << " попытка\n404 - угаданные карты";
+            std::cout << "\n                               " << schet << " попытка\n404 - угаданные карты\n";
         }
         else
         {
-            std::cout << "Ќеверно, повторите попытку                    " << schet << " попытка\n404 - угаданные карты";
-        }
-        break;
+            nool.at(polX).at(polY) = 0;
+            nool.at(polX1).at(polY1) = 0;
 
-    } while (choose != 0);
+            std::cout << "Ќеверно, повторите попытку                    " << schet << " попытка\n404 - угаданные карты\n";
+        }
+
+    } while (chaose != 0);
 }
-*/
